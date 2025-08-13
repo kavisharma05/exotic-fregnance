@@ -1,8 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Next.js automatically detects src/app directory in version 13+
-  // No additional configuration needed for src directory
+  // Ensure compatibility with Vercel and src directory structure
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: false,
+  },
+  typescript: {
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    ignoreBuildErrors: false,
+  },
+  // Enable static optimization
+  trailingSlash: false,
+  // Ensure app directory is properly detected
+  experimental: {},
 };
 
 export default nextConfig;
